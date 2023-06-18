@@ -22,6 +22,9 @@ from app.slack_ops import (
     DEFAULT_HOME_TAB_CONFIGURE_LABEL,
 )
 from app.i18n import translate
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 if __name__ == "__main__":

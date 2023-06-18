@@ -36,11 +36,11 @@ To run this app on your local machine, you only need to follow these simple step
 
 ```bash
 # Create an app-level token with connections:write scope
-export SLACK_APP_TOKEN=xapp-1-...
+export SLACK_APP_TOKEN=xapp-1-A05DSBE843S-5438026913126-04e9724453d0b3fa422577ce5f78afef09b22f0ea673a17db32c2b4e2099f7ed
 # Install the app into your workspace to grab this token
-export SLACK_BOT_TOKEN=xoxb-...
+export SLACK_BOT_TOKEN=xoxb-810524309297-5444559069155-g4fGginWw5worDDBa1cwpsfT
 # Visit https://platform.openai.com/account/api-keys for this token
-export OPENAI_API_KEY=sk-...
+export OPENAI_API_KEY=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
 
 # Optional: gpt-3.5-turbo and gpt-4 are currently supported (default: gpt-3.5-turbo)
 export OPENAI_MODEL=gpt-4
@@ -54,21 +54,11 @@ for mistakes and make suggestion to improve the language of the given text"
 # Optional: When the string is "true", this app translates ChatGPT prompts into a user's preferred language (default: true)
 export USE_SLACK_LANGUAGE=true
 # Optional: Adjust the app's logging level (default: DEBUG)
-export SLACK_APP_LOG_LEVEL=INFO
+export SLACK_APP_LOG_LEVEL=DEBUG
 # Optional: When the string is "true", translate between OpenAI markdown and Slack mrkdwn format (default: false)
 export TRANSLATE_MARKDOWN=true
 # Optional: When the string is "true", perform some basic redaction on propmts sent to OpenAI (default: false)
 export REDACTION_ENABLED=true
-
-# To use Azure OpenAI, set the following optional environment variables according to your environment
-# default: None
-export OPENAI_API_TYPE=azure
-# default: https://api.openai.com/v1
-export OPENAI_API_BASE=https://YOUR_RESOURCE_NAME.openai.azure.com
-# default: None
-export OPENAI_API_VERSION=2023-05-15
-# default: None
-export OPENAI_DEPLOYMENT_ID=YOUR-DEPLOYMENT-ID
 
 python -m venv .venv
 source .venv/bin/activate

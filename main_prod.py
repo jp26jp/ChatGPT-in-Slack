@@ -39,13 +39,13 @@ from app.i18n import translate
 #
 # Product deployment (AWS Lambda)
 #
-# export SLACK_CLIENT_ID=
-# export SLACK_CLIENT_SECRET=
-# export SLACK_SIGNING_SECRET=
+# export SLACK_CLIENT_ID=810524309297.5468388276128
+# export SLACK_CLIENT_SECRET=909370c145780a182213203c4d245548
+# export SLACK_SIGNING_SECRET=ef84c3b789c56e38f561294a8a620909
 # export SLACK_SCOPES=app_mentions:read,channels:history,groups:history,im:history,mpim:history,chat:write.public,chat:write,users:read
-# export SLACK_INSTALLATION_S3_BUCKET_NAME=
-# export SLACK_STATE_S3_BUCKET_NAME=
-# export OPENAI_S3_BUCKET_NAME=
+# export SLACK_INSTALLATION_S3_BUCKET_NAME=chatgpt-slack-installation-abc123
+# export SLACK_STATE_S3_BUCKET_NAME=chatgpt-slack-state-xyz789
+# export OPENAI_S3_BUCKET_NAME=chatgpt-openai-storage-pqr456
 # npm install -g serverless
 # serverless plugin install -n serverless-python-requirements
 # serverless deploy
@@ -54,6 +54,9 @@ from app.i18n import translate
 import boto3
 from slack_bolt.adapter.aws_lambda import SlackRequestHandler
 from slack_bolt.adapter.aws_lambda.lambda_s3_oauth_flow import LambdaS3OAuthFlow
+from dotenv import load_dotenv
+
+load_dotenv()
 
 SlackRequestHandler.clear_all_log_handlers()
 logging.basicConfig(format="%(asctime)s %(message)s", level=SLACK_APP_LOG_LEVEL)
@@ -112,6 +115,8 @@ def register_revocation_handlers(app: App):
 
 
 def handler(event, context_):
+    logger = logging.getLogger(__name__)
+    logger.debug("Firing off handler")
     app = App(
         process_before_response=True,
         before_authorize=before_authorize,
